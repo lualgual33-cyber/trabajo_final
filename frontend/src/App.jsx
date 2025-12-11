@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { getTodos, createTodo, deleteTodo, updateTodo } from "./services/api";
+import {
+    getTodos,
+    createTodo,
+    deleteTodo,
+    updateTodo,
+} from "./services/api";
 
 function App() {
     const [todos, setTodos] = useState([]);
 
-    // Campos del formulario
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-
-    // Para editar
     const [editing, setEditing] = useState(null);
 
     const loadTodos = async () => {
@@ -21,20 +23,17 @@ function App() {
     }, []);
 
     const handleCreate = async () => {
-        if (!title.trim()) return alert("El título es obligatorio");
-
+        if (!title.trim()) {
+            alert("El título es obligatorio");
+            return;
+        }
         await createTodo({ title, description });
         setTitle("");
         setDescription("");
         loadTodos();
     };
 
-    const handleDelete = async (id) => {
-        await deleteTodo(id);
-        loadTodos();
-    };
-
-    const handleEdit = (todo) => {
+    const startEdit = (todo) => {
         setEditing(todo.id);
         setTitle(todo.title);
         setDescription(todo.description);
@@ -46,55 +45,68 @@ function App() {
             description,
             status: "pending",
         });
-
         setEditing(null);
         setTitle("");
         setDescription("");
+        loadTodos();
+    };
 
+    const toggleStatus = async (todo) => {
+        await updateTodo(todo.id, {
+            title: todo.title,
+            description: todo.description,
+            status: todo.status === "pending" ? "completed" : "pending",
+        });
         loadTodos();
     };
 
     return (
-        <div style={{ padding: "20px" }}>
-            <h1>Todo App</h1>
+        <div style={{ padding: 20 }}>
+            <h1>Gestión de tareas</h1>
 
             <input
-                placeholder="Título"
+                placeholder="Título (obligatorio)"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-
             <input
-                placeholder="Descripción"
+                placeholder="Descripción (opcional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
 
             {editing ? (
-                <button onClick={handleUpdate} style={{ background: "orange" }}>
-                    Guardar cambios
-                </button>
+                <button onClick={handleUpdate}>Guardar cambios</button>
             ) : (
-                <button onClick={handleCreate} style={{ background: "green" }}>
-                    Crear
-                </button>
+                <button onClick={handleCreate}>Crear tarea</button>
             )}
 
             <ul>
                 {todos.map((todo) => (
-                    <li key={todo.id} style={{ marginTop: "15px" }}>
+                    <li key={todo.id} style={{ marginTop: 15 }}>
                         <strong>{todo.title}</strong> – {todo.description}
+                        <br />
+                        Estado:{" "}
+                        <b style={{ color: todo.status === "pending" ? "red" : "green" }}>
+                            {todo.status}
+                        </b>
+                        <br />
+                        Fecha: {new Date(todo.created_at).toLocaleString()}
 
-                        <button
-                            onClick={() => handleEdit(todo)}
-                            style={{ marginLeft: "10px" }}
-                        >
+                        <br />
+                        <button onClick={() => toggleStatus(todo)}>
+                            {todo.status === "pending"
+                                ? "Marcar completada"
+                                : "Marcar pendiente"}
+                        </button>
+
+                        <button onClick={() => startEdit(todo)} style={{ marginLeft: 10 }}>
                             Editar
                         </button>
 
                         <button
-                            onClick={() => handleDelete(todo.id)}
-                            style={{ marginLeft: "10px", color: "red" }}
+                            onClick={() => deleteTodo(todo.id)}
+                            style={{ marginLeft: 10, color: "red" }}
                         >
                             Eliminar
                         </button>
