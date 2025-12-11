@@ -27,7 +27,7 @@ function App() {
             alert("El título es obligatorio");
             return;
         }
-        await createTodo({ title, description });
+        await createTodo({ title, description, status: "pendiente" });
         setTitle("");
         setDescription("");
         loadTodos();
@@ -43,7 +43,7 @@ function App() {
         await updateTodo(editing, {
             title,
             description,
-            status: "pending",
+            status: "pendiente",
         });
         setEditing(null);
         setTitle("");
@@ -52,11 +52,15 @@ function App() {
     };
 
     const toggleStatus = async (todo) => {
+        const nuevoEstado =
+            todo.status === "pendiente" ? "completado" : "pendiente";
+
         await updateTodo(todo.id, {
             title: todo.title,
             description: todo.description,
-            status: todo.status === "pending" ? "completed" : "pending",
+            status: nuevoEstado,
         });
+
         loadTodos();
     };
 
@@ -87,7 +91,7 @@ function App() {
                         <strong>{todo.title}</strong> – {todo.description}
                         <br />
                         Estado:{" "}
-                        <b style={{ color: todo.status === "pending" ? "red" : "green" }}>
+                        <b style={{ color: todo.status === "pendiente" ? "red" : "green" }}>
                             {todo.status}
                         </b>
                         <br />
@@ -95,7 +99,7 @@ function App() {
 
                         <br />
                         <button onClick={() => toggleStatus(todo)}>
-                            {todo.status === "pending"
+                            {todo.status === "pendiente"
                                 ? "Marcar completada"
                                 : "Marcar pendiente"}
                         </button>
@@ -118,3 +122,4 @@ function App() {
 }
 
 export default App;
+
