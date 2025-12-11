@@ -1,67 +1,84 @@
-🚀 README.md – Documentación completa del Proyecto Final
-📌 Aplicación de Gestión de Tareas (To-Do App)
+Todo App MySQL — Proyecto Final Integrador
+Aplicación fullstack para gestión de tareas (Todo App), desarrollada como proyecto final integrador.
+Incluye frontend en React con Vite, backend en Node.js y base de datos MySQL desplegada en la nube.
 
-Proyecto completo de frontend + backend + base de datos en la nube para gestionar tareas mediante una API REST. Permite crear, listar, editar, cambiar el estado y eliminar tareas.
+Vista Previa
+Interfaz limpia y moderna
 
-Este proyecto demuestra integración entre un frontend moderno, un backend con API, y una base de datos real alojada en la nube, cumpliendo todos los requisitos de la asignatura.
+Diseño responsivo
 
-📁 Estructura del Proyecto
-Trabajo_Final/
-│
-├── frontend/       # Aplicación React + Vite
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   ├── vite.config.js
-│   └── README.md (opcional)
-│
-├── backend/        # Servidor Express + MySQL
-│   ├── routes/
-│   ├── db.js
-│   ├── server.js
-│   ├── package.json
-│   └── README.md (opcional)
-│
-└── README.md        # DOCUMENTACIÓN PRINCIPAL DE TODO EL PROYECTO
+CRUD completo de tareas
 
-🎯 1. Descripción del Proyecto
+Backend con API REST
 
-El sistema permite CRUD completo de tareas con estados, integrando:
+Persistencia en MySQL
 
-Usuario → Frontend (Vercel) → Backend (Render) → Base de Datos (Railway MySQL)
+Deploy en Vercel + Render
 
-🧱 2. Stack Tecnológico
-🌐 Frontend
+1. Stack Tecnológico
+Frontend
+React 18
 
-React + Vite
+Vite
 
-Despliegue: Vercel
+Axios
 
-🖥️ Backend
+CSS3 (estilos personalizados)
 
+Backend
 Node.js
 
-Express.js
+Express
+
+MySQL (driver mysql2/promise)
+
+Dotenv
 
 CORS
 
-MySQL2
+DevOps / Deploy
+Vercel (Frontend)
 
-Despliegue: Render (nuevo, corregido)
-👉 Servicio Node.js que ejecuta server.js
+Render (Backend)
 
-🗄️ Base de Datos
+GitHub (Código fuente)
 
-MySQL en Railway
+2. URLs del Proyecto
+Repositorio
+https://github.com/JohanSebastianTequiaForero/Trabajo_Final
 
-🛠️ 3. Requisitos previos
+Frontend (Producción – Vercel)
+https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app
 
-Sin cambios.
+Backend (Producción – Render)
+https://trabajo-final-em1b.onrender.com
 
-🧩 4. Variables de entorno
-📌 /backend/.env
+Base URL API
+Desarrollo:
+http://localhost:3000
 
-(Se mantiene igual porque la BD sigue en Railway)
+Producción:
+https://trabajo-final-em1b.onrender.com
+
+3. Requisitos Previos
+Node.js v18+
+
+npm v9+
+
+Git
+
+MySQL Local (opcional)
+
+4. Instalación y Ejecución en Local
+4.1 Clonar repositorio
+git clone https://github.com/JohanSebastianTequiaForero/Trabajo_Final.git
+cd Trabajo_Final
+4.2 Backend — Node.js + Express
+Entrar a la carpeta:
+
+cd backend
+npm install
+Crear archivo .env:
 
 DB_HOST=trolley.proxy.rlwy.net
 DB_PORT=18625
@@ -69,83 +86,158 @@ DB_USER=root
 DB_PASS=tglcKRfEzZDaEwKMoesbEfUbccfCdoyP
 DB_NAME=railway
 
-📌 /frontend/.env
+Ejecutar:
 
-Ahora debe apuntar al backend en Render:
-
-VITE_API_URL=https://trabajo-final-em1b.onrender.com
-
-
-⚠️ Reemplaza esta URL si Render te generó otra distinta.
-
-🖥️ 5. Ejecutar en local
-
-Sin cambios.
-
-Backend local:
-
-npm start
-
-
-Frontend local:
-
-npm run dev
-
-🌐 6. Enlaces del Proyecto en Producción
-🚀 Frontend (Vercel)
-
-👉 https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app/
-
-🟩 Backend (Render)
-
-👉 https://trabajo-final-em1b.onrender.com/
-
-(o la URL real que Render te dio)
-
-✔ Está en Render
-✔ Corre Node.js
-✔ Se despliega automáticamente desde GitHub
-
-🗄️ Base de Datos (Railway)
-
-Dashboard: https://railway.com/invite/7sGxinCHPQE
-
-📡 7. Endpoints de la API REST
-
-(Sin cambios porque tu backend sigue igual, solo cambió el hosting)
-
-Base URL ahora es:
-
+node index.js
+Backend corriendo en:
 https://trabajo-final-em1b.onrender.com
 
+4.3 Frontend — React + Vite
+Entrar a la carpeta:
 
-Ejemplos:
+cd frontend
+npm install
+Crear archivo .env:
 
-Método	Ruta	Función
-GET	/todos	Listar
-POST	/todos	Crear
-PUT	/todos/:id	Editar
-DELETE	/todos/:id	Eliminar
-🧪 8. Pruebas en Postman
+VITE_API_URL=https://trabajo-final-em1b.onrender.com
+Ejecutar:
 
-Ahora usar:
+npm run dev
+Frontend en:
+https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app?_vercel_share=gWGgT0jvuLbFKhmZ79cpM03tArtcw2Ed
 
-https://trabajo-final-em1b.onrender.com/todos
+5. Estructura del Proyecto
+Trabajo_Final/
+├── backend/
+│   ├── index.js
+│   ├── conexion.js
+│   ├── package.json
+│   └── .env.example
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ToDoList.jsx
+│   │   │   ├── TodoForm.jsx
+│   │   │   └── TodoItem.jsx
+│   │   ├── api/
+│   │   │   └── lista.js
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── .env.example
+│
+└── README.md
+6. Documentación de la API (API REST)
+Base URL desarrollo:
+https://railway.com/invite/7sGxinCHPQE
 
-📸 9. Capturas recomendadas
+Base URL producción:
+https://trabajo-final-em1b.onrender.com
 
-Incluye ahora:
+6.1 GET /todos
+Obtiene todas las tareas.
 
-✔ Render mostrando backend corriendo
-✔ Railway mostrando la base de datos
-✔ Vercel mostrando frontend
+Request
+curl https://trabajofinal-production-4e79.up.railway.app/todos
+Response 200 OK
+[
+  {
+    "id": 1,
+    "titulo": "Comprar pan",
+    "descripcion": "Pan integral",
+    "estado": "pendiente",
+    "fecha_creacion": "2025-02-01T10:30:00.000Z"
+  }
+]
+6.2 POST /todos
+Crea una nueva tarea.
 
-🏁 10. Conclusión
+Request
+curl -X POST https://trabajofinal-production-4e79.up.railway.app/todos \
+-H "Content-Type: application/json" \
+-d '{
+  "titulo": "Hacer ejercicio",
+  "descripcion": "30 minutos"
+}'
+Body esperado
+{
+  "titulo": "texto",     // Requerido
+  "descripcion": "texto" // Opcional
+}
+Response 201 Created
+{
+  "id": 2,
+  "titulo": "Hacer ejercicio",
+  "descripcion": "30 minutos",
+  "estado": "pendiente",
+  "fecha_creacion": "2025-02-01T12:00:00.000Z"
+}
+Error 400
+{ "error": "El título es obligatorio" }
+6.3 PUT /tareas/:id
+Actualiza una tarea existente.
 
-El proyecto ahora queda correctamente documentado con:
+Request
+curl -X PUT https://trabajofinal-production-4e79.up.railway.app/todos/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "titulo": "Comprar pan integral",
+  "descripcion": "Pan sin azúcar",
+  "estado": "completada"
+}'
+Body esperado
+{
+  "titulo": "texto",
+  "descripcion": "texto",
+  "estado": "pendiente | completada"
+}
+Response 200 OK
+{
+  "id": 1,
+  "titulo": "Comprar pan integral",
+  "descripcion": "Pan sin azúcar",
+  "estado": "completada"
+}
+6.4 DELETE /tareas/:id
+Elimina una tarea.
 
-✔ Backend desplegado en Render
-✔ Frontend en Vercel
-✔ Base de datos en Railway
-✔ CRUD completo y funcional
-✔ Documentación lista para entregar
+Request
+curl -X DELETE https://trabajofinal-production-4e79.up.railway.app/todos/1
+Response 200 OK
+{ "mensaje": "Tarea eliminada correctamente" }
+Error 404
+{ "error": "Tarea no encontrada" }
+7. Códigos de Estado HTTP
+Código	Descripción
+200	OK
+201	Created
+400	Bad Request
+404	Not Found
+500	Server Error
+8. Troubleshooting
+“CORS Error”
+Verificar que cors() esté habilitado en el backend.
+
+Revisar VITE_API_URL en frontend.
+
+“Error de conexión a MySQL”
+Revisar credenciales del .env.
+
+Asegurar que MySQL esté corriendo.
+
+“Cannot GET /”
+Recordar que la API solo responde a rutas /tareas.
+
+9. Autores
+Proyecto realizado por:
+
+Johan Sebastián Tequia Forero
+
+Ana María Guzmán
+
+Alixon Guzmán
+
+10. Licencia
+Proyecto académico. Uso educativo.
+
