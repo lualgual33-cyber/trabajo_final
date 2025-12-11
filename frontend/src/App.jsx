@@ -1,48 +1,61 @@
 import { useEffect, useState } from "react";
-import { getTodos, createTodo } from "./services/api";
+import { getTodos, createTodo, deleteTodo, updateTodo } from "./services/api";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState("");
+    const [todos, setTodos] = useState([]);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
-  async function load() {
-    try {
-      const data = await getTodos();
-      setTodos(data);
-    } catch (e) {
-      alert("Error cargando todos: " + e.message);
-    }
-  }
+    const loadTodos = async () => {
+        const data = await getTodos();
+        setTodos(data);
+    };
 
-  async function addTodo() {
-    if (!title.trim()) return;
-    await createTodo({ title });
-    setTitle("");
-    load();
-  }
+    useEffect(() => {
+        loadTodos();
+    }, []);
 
-  useEffect(() => {
-    load();
-  }, []);
+    const handleCreate = async () => {
+        if (!title.trim()) return alert("El título es obligatorio");
+        await createTodo({ title, description });
+        setTitle("");
+        setDescription("");
+        loadTodos();
+    };
 
-  return (
-    <div>
-      <h1>Todo App</h1>
+    const handleDelete = async (id) => {
+        await deleteTodo(id);
+        loadTodos();
+    };
 
-      <input
-        placeholder="Título"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <button onClick={addTodo}>Crear</button>
+    return (
+        <div>
+            <h1>Todo App</h1>
 
-      <ul>
-        {todos.map((t) => (
-          <li key={t.id}>{t.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
+            <input
+                placeholder="Título"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <input
+                placeholder="Descripción"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+
+            <button onClick={handleCreate}>Crear</button>
+
+            <ul>
+                {todos.map(todo => (
+                    <li key={todo.id}>
+                        <strong>{todo.title}</strong> - {todo.description}
+                        <button onClick={() => handleDelete(todo.id)}>Eliminar</button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default App;
