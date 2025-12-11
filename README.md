@@ -1,298 +1,428 @@
-# Todo App MySQL — Proyecto Final Integrador
+# 📋 Todo App MySQL — Proyecto Final Integrador
 
-Aplicación fullstack para gestión de tareas (**Todo App**), desarrollada como proyecto final integrador.  
-Incluye **frontend en React + Vite**, **backend en Node.js + Express**, y **base de datos MySQL** desplegada en la nube.
-
----
+Aplicación fullstack para gestión de tareas (**Todo App**), desarrollada como proyecto final integrador. Incluye **frontend en React + Vite**, **backend en Node.js + Express**, y **base de datos MySQL** desplegada en la nube.
 
 ## 📸 Vista Previa
 
-- Interfaz limpia y moderna  
-- Diseño responsivo  
-- CRUD completo de tareas  
-- API REST funcional  
-- Base de datos en MySQL  
-- Deploy en **Vercel (frontend)** y **Render (backend)**  
+
+- Interfaz limpia y moderna
+- Diseño responsivo
+- CRUD completo de tareas
+- API REST funcional
 
 ---
 
-# 1. Stack Tecnológico
+## 🛠️ Stack Tecnológico
 
-## Frontend
-- React 18  
-- Vite  
-- Axios  
-- CSS3 (estilos personalizados)
+### Frontend
+- **React 18** - Librería UI
+- **Vite** - Build tool
+- **CSS3** - Estilos personalizados
+- **Axios** - Cliente HTTP
 
-## Backend
-- Node.js  
-- Express  
-- MySQL (mysql2/promise)  
-- CORS  
-- Dotenv  
+### Backend
+- **Node.js** - Runtime JavaScript
+- **Express** - Framework web
+- **MySQL** (`mysql2/promise`) - Driver y base de datos
+- **CORS** - Seguridad entre dominios
+- **Dotenv** - Variables de entorno
 
-## DevOps / Deploy
-- **Vercel** (Frontend)  
-- **Render** (Backend)  
-- GitHub (Código fuente)
-
----
-
-# 2. URLs del Proyecto
-
-### 📂 Repositorio
-https://github.com/JohanSebastianTequiaForero/Trabajo_Final
-
-shell
-Copiar código
-
-### 🌐 Frontend — Producción (Vercel)
-https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app
-
-shell
-Copiar código
-
-### 🔌 Backend — Producción (Render)
-https://trabajo-final-em1b.onrender.com
-
-markdown
-Copiar código
-
-### Base URL API
-
-**Desarrollo**
-http://localhost:3000
-
-markdown
-Copiar código
-
-**Producción**
-https://trabajo-final-em1b.onrender.com
-
-yaml
-Copiar código
+### DevOps & Deploy
+- **Vercel** - Hosting Frontend
+- **Render** - Hosting Backend
+- **GitHub** - Código Fuente
 
 ---
 
-# 3. Requisitos Previos
+## ✅ Requisitos Previos
 
-- Node.js v18+  
-- npm v9+  
-- Git  
-- MySQL local (opcional)
+### Sistema
+- **Node.js** v18+ o superior
+- **npm** v9+ o superior
+- **Git**
 
----
-
-# 4. Instalación y Ejecución en Local
-
-## 4.1 Clonar repositorio
+### Verificar instalación
 ```bash
-git clone https://github.com/JohanSebastianTequiaForero/Trabajo_Final.git
-cd Trabajo_Final
-4.2 Backend — Node.js + Express
-Entrar a la carpeta:
+node --version    # v18.x.x
+npm --version     # v9.x.x
+git --version     # v2.x.x
+````
 
-bash
-Copiar código
+-----
+
+## 🚀 Ejecución en Local
+
+### 1️⃣ Clonar Repositorio
+
+```bash
+git clone [https://github.com/JohanSebastianTequiaForero/Trabajo_Final.git](https://github.com/JohanSebastianTequiaForero/Trabajo_Final.git)
+cd Trabajo_Final
+```
+
+### 2️⃣ Frontend - React + Vite
+
+#### Instalación
+
+```bash
+cd frontend
+npm install
+```
+
+#### Variables de Entorno
+
+```bash
+cp .env.example .env
+```
+
+Edita `frontend/.env`:
+
+```env
+# URL de la API Backend (Local)
+VITE_API_URL=http://localhost:3000
+
+# URL de la API Backend (Producción)
+# VITE_API_URL=[https://trabajo-final-em1b.onrender.com](https://trabajo-final-em1b.onrender.com)
+```
+
+#### Ejecutar en Desarrollo
+
+```bash
+npm run dev
+```
+
+Frontend estará en: **http://localhost:5173** (o similar)
+
+#### Build para Producción
+
+*(Instrucción no aplica/no provista en el original)*
+
+-----
+
+### 3️⃣ Backend - Node.js + Express
+
+#### Instalación
+
+```bash
 cd backend
 npm install
-Crear archivo .env:
+```
 
-env
-Copiar código
+#### Variables de Entorno
+
+```bash
+cp .env.example .env
+```
+
+Edita `backend/.env`:
+
+```env
+# Credenciales de MySQL
 DB_HOST=trolley.proxy.rlwy.net
 DB_PORT=18625
 DB_USER=root
 DB_PASS=tglcKRfEzZDaEwKMoesbEfUbccfCdoyP
 DB_NAME=railway
-Ejecutar:
+```
 
-bash
-Copiar código
+#### Base de Datos
+
+La base de datos se conecta a una instancia remota de MySQL.
+
+**Opción 1: Usar Credenciales Remotas (Recomendado)**
+*Asegúrate de que las credenciales en el archivo `.env` sean las correctas para tu base de datos desplegada (Railway/Render).*
+
+**Opción 2: MySQL Local (Opcional)**
+*Si usas una base de datos local, actualiza las credenciales `DB_HOST`, `DB_PORT`, etc., a `localhost`.*
+
+#### Ejecutar en Desarrollo
+
+```bash
 node index.js
-Backend corriendo en:
+```
 
-arduino
-Copiar código
-https://trabajo-final-em1b.onrender.com
-4.3 Frontend — React + Vite
-Entrar a la carpeta:
+Backend estará corriendo en: **http://localhost:3000**
 
-bash
-Copiar código
-cd frontend
-npm install
-Crear archivo .env:
+-----
 
-env
-Copiar código
-VITE_API_URL=https://trabajo-final-em1b.onrender.com
-Ejecutar:
+## 🌍 URLs de Producción
 
-bash
-Copiar código
-npm run dev
-Frontend en:
+### ✨ Frontend - Vercel
 
-arduino
-Copiar código
-https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app?_vercel_share=gWGgT0jvuLbFKhmZ79cpM03tArtcw2Ed
-5. Estructura del Proyecto
-pgsql
-Copiar código
-Trabajo_Final/
-├── backend/
-│   ├── index.js
-│   ├── conexion.js
-│   ├── package.json
-│   └── .env.example
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ToDoList.jsx
-│   │   │   ├── TodoForm.jsx
-│   │   │   └── TodoItem.jsx
-│   │   ├── api/
-│   │   │   └── lista.js
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── .env.example
-│
-└── README.md
-6. Documentación de la API (REST)
-Base URL — Desarrollo
-arduino
-Copiar código
-https://railway.com/invite/7sGxinCHPQE
-Base URL — Producción
-arduino
-Copiar código
-https://trabajo-final-em1b.onrender.com
-6.1 GET /todos
+📱 **https://www.google.com/search?q=https://todo-app-mysql-git-main-johansebastiantequiaforeros-projects.vercel.app/**
+
+  - Interfaz de usuario final
+  - Consume la API desplegada en Render
+
+### 🔌 Backend - Render
+
+🖥️ **https://trabajo-final-em1b.onrender.com**
+
+  - API REST funcional
+  - Conexión a Base de Datos MySQL
+
+### 📂 Repositorio
+
+🤖 **https://github.com/JohanSebastianTequiaForero/Trabajo\_Final**
+
+-----
+
+## 📚 Documentación de API
+
+### Base URL
+
+```
+http://localhost:3000             (Desarrollo)
+[https://trabajo-final-em1b.onrender.com](https://trabajo-final-em1b.onrender.com)  (Producción)
+```
+
+### 1\. GET /todos
+
 Obtiene todas las tareas.
 
-Request
-bash
-Copiar código
-curl https://trabajofinal-production-4e79.up.railway.app/todos
-Response 200 OK
-json
-Copiar código
+**Request:**
+
+```bash
+curl [https://trabajofinal-production-4e79.up.railway.app/todos](https://trabajofinal-production-4e79.up.railway.app/todos)
+```
+
+**Response (200 OK):**
+
+```json
 [
-  {
-    "id": 1,
-    "titulo": "Comprar pan",
-    "descripcion": "Pan integral",
-    "estado": "pendiente",
-    "fecha_creacion": "2025-02-01T10:30:00.000Z"
-  }
+  {
+    "id": 1,
+    "titulo": "Comprar pan",
+    "descripcion": "Pan integral",
+    "estado": "pendiente",
+    "fecha_creacion": "2025-02-01T10:30:00.000Z"
+  }
 ]
-6.2 POST /todos
+```
+
+-----
+
+### 2\. POST /todos
+
 Crea una nueva tarea.
 
-Request
-bash
-Copiar código
-curl -X POST https://trabajofinal-production-4e79.up.railway.app/todos \
--H "Content-Type: application/json" \
--d '{
-  "titulo": "Hacer ejercicio",
-  "descripcion": "30 minutos"
-}'
-Body esperado
-json
-Copiar código
+**Request:**
+
+```bash
+curl -X POST [https://trabajofinal-production-4e79.up.railway.app/todos](https://trabajofinal-production-4e79.up.railway.app/todos) \
+  -H "Content-Type: application/json" \
+  -d '{
+    "titulo": "Hacer ejercicio",
+    "descripcion": "30 minutos"
+  }'
+```
+
+**Body esperado:**
+
+```json
 {
-  "titulo": "texto",     
-  "descripcion": "texto"
+  "titulo": "texto",           // Requerido (string)
+  "descripcion": "texto"       // Opcional (string)
 }
-Response 201 Created
-json
-Copiar código
+```
+
+**Response (201 Created):**
+
+```json
 {
-  "id": 2,
-  "titulo": "Hacer ejercicio",
-  "descripcion": "30 minutos",
-  "estado": "pendiente",
-  "fecha_creacion": "2025-02-01T12:00:00.000Z"
+  "id": 2,
+  "titulo": "Hacer ejercicio",
+  "descripcion": "30 minutos",
+  "estado": "pendiente",
+  "fecha_creacion": "2025-02-01T12:00:00.000Z"
 }
-Error 400
-json
-Copiar código
-{ "error": "El título es obligatorio" }
-6.3 PUT /tareas/:id
+```
+
+**Errores:**
+
+```json
+// 400 Bad Request - Falta título
+{
+  "error": "El título es obligatorio"
+}
+```
+
+-----
+
+### 3\. PUT /todos/:id
+
 Actualiza una tarea existente.
 
-Request
-bash
-Copiar código
-curl -X PUT https://trabajofinal-production-4e79.up.railway.app/todos/1 \
--H "Content-Type: application/json" \
--d '{
-  "titulo": "Comprar pan integral",
-  "descripcion": "Pan sin azúcar",
-  "estado": "completada"
-}'
-Body esperado
-json
-Copiar código
+**Request:**
+
+```bash
+curl -X PUT [https://trabajofinal-production-4e79.up.railway.app/todos/1](https://trabajofinal-production-4e79.up.railway.app/todos/1) \
+  -H "Content-Type: application/json" \
+  -d '{
+    "titulo": "Comprar pan integral",
+    "descripcion": "Pan sin azúcar",
+    "estado": "completada"
+  }'
+```
+
+**Body esperado:**
+
+```json
 {
-  "titulo": "texto",
-  "descripcion": "texto",
-  "estado": "pendiente | completada"
+  "titulo": "texto",      // Opcional
+  "descripcion": "texto", // Opcional
+  "estado": "pendiente | completada"                  // Opcional
 }
-Response 200 OK
-json
-Copiar código
+```
+
+**Response (200 OK):**
+
+```json
 {
-  "id": 1,
-  "titulo": "Comprar pan integral",
-  "descripcion": "Pan sin azúcar",
-  "estado": "completada"
+  "id": 1,
+  "titulo": "Comprar pan integral",
+  "descripcion": "Pan sin azúcar",
+  "estado": "completada"
 }
-6.4 DELETE /tareas/:id
-Request
-bash
-Copiar código
-curl -X DELETE https://trabajofinal-production-4e79.up.railway.app/todos/1
-Response 200 OK
-json
-Copiar código
-{ "mensaje": "Tarea eliminada correctamente" }
-Error 404
-json
-Copiar código
-{ "error": "Tarea no encontrada" }
-7. Códigos de Estado HTTP
-Código	Descripción
-200	OK
-201	Created
-400	Bad Request
-404	Not Found
-500	Server Error
+```
 
-8. Troubleshooting
-“CORS Error”
-Verificar que cors() esté habilitado
+**Errores:**
 
-Revisar VITE_API_URL en frontend
+```json
+// 404 Not Found
+{
+  "error": "Tarea no encontrada"
+}
+```
 
-“Error de conexión a MySQL”
-Revisar credenciales del .env
+-----
 
-Asegurar que MySQL está en funcionamiento
+### 4\. DELETE /todos/:id
 
-“Cannot GET /”
-Recordar que la API responde solo a rutas /tareas
+Elimina una tarea.
 
-9. Autores
-Johan Sebastián Tequia Forero
+**Request:**
 
-Ana María Guzmán
+```bash
+curl -X DELETE [https://trabajofinal-production-4e79.up.railway.app/todos/1](https://trabajofinal-production-4e79.up.railway.app/todos/1)
+```
 
-Alixon Guzmán
+**Response (200 OK):**
 
-10. Licencia
+```json
+{
+  "mensaje": "Tarea eliminada correctamente"
+}
+```
+
+**Errores:**
+
+```json
+// 404 Not Found
+{
+  "error": "Tarea no encontrada"
+}
+```
+
+-----
+
+## 📊 Códigos de Estado HTTP
+
+| Código | Significado | Ejemplo |
+|--------|-------------|---------|
+| **200** | OK | GET, PUT, DELETE exitosos |
+| **201** | Created | POST exitoso |
+| **400** | Bad Request | Datos inválidos o incompletos |
+| **404** | Not Found | Recurso no existe |
+| **500** | Server Error | Error en el servidor |
+
+-----
+
+## 🔧 Variables de Entorno
+
+### Frontend (.env)
+
+```env
+# API Backend URL
+VITE_API_URL=http://localhost:3000
+
+# Para Vercel (producción):
+# VITE_API_URL=[https://trabajo-final-em1b.onrender.com](https://trabajo-final-em1b.onrender.com)
+```
+
+### Backend (.env)
+
+```env
+# Credenciales de MySQL
+DB_HOST=trolley.proxy.rlwy.net
+DB_PORT=18625
+DB_USER=root
+DB_PASS=tglcKRfEzZDaEwKMoesbEfUbccfCdoyP
+DB_NAME=railway
+```
+
+-----
+
+## 📁 Estructura del Proyecto
+
+```
+Trabajo_Final/
+├── frontend/                    # React + Vite
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ToDoList.jsx
+│   │   │   ├── TodoForm.jsx
+│   │   │   └── TodoItem.jsx
+│   │   ├── api/
+│   │   │   └── lista.js           # Cliente Axios
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── .env.example
+│
+├── backend/                     # Node.js + Express
+│   ├── index.js                 # Punto de entrada y lógica
+│   ├── conexion.js              # Conexión MySQL
+│   ├── package.json
+│   └── .env.example
+│
+└── README.md                    # Este archivo
+```
+
+-----
+
+## 🐛 Troubleshooting
+
+### "CORS Error"
+
+  - Verifica que `cors()` esté habilitado en el backend
+  - Revisa que `VITE_API_URL` en frontend sea correcto
+
+### "Error de conexión a MySQL"
+
+  - Revisa las credenciales en el archivo `.env`
+  - Asegura que MySQL está en funcionamiento
+
+### "Cannot GET /"
+
+  - Recuerda que la API responde solo a rutas `/todos`
+
+-----
+
+## 📞 Contacto & Créditos
+
+**Autores**:
+
+  - **Johan Sebastián Tequia Forero**
+  - **Ana María Guzmán**
+  - **Alixon Guzmán**
+      
+    **Repositorio**: https://github.com/JohanSebastianTequiaForero/Trabajo\_Final
+
+-----
+
+## 📄 Licencia
+
 Proyecto académico — Uso educativo.
+
+```
+```
