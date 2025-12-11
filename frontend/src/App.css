@@ -7,7 +7,7 @@ body {
     max-width: 700px;
     margin: 35px auto;
     padding: 25px;
-    background: white;
+    background: rgb(60, 211, 198);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
